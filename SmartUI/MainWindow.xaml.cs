@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Reflection;
+using System.ComponentModel;
+using Vlc.DotNet.Wpf;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 using SensorMsg;
+using Dragablz;
 using Google.Protobuf;
+using Vlc.DotNet.Core;
+using Vlc.DotNet.Core.Interops;
 
 namespace SmartUI
 {
@@ -24,17 +19,53 @@ namespace SmartUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly DirectoryInfo vlcLibDirectory;
+        private VlcControl control;
+
         public MainWindow()
         {
             InitializeComponent();
+            var currentAssembly = Assembly.GetEntryAssembly();
+            var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
+            // Default installation path of VideoLAN.LibVLC.Windows
+            vlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
         }
-       
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            this.control?.Dispose();
+            base.OnClosing(e);
+        }
+
+        private void OnPlayButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.control?.Dispose();
+            this.control = new VlcControl();
+            this.ControlContainer.Content = this.control;
+            this.control.SourceProvider.CreatePlayer(this.vlcLibDirectory);
+
+            // This can also be called before EndInit
+            this.control.SourceProvider.MediaPlayer.Log += (_, args) =>
+            {
+                string message = $"libVlc : {args.Level} {args.Message} @ {args.Module}";
+                System.Diagnostics.Debug.WriteLine(message);
+            };
+
+            control.SourceProvider.MediaPlayer.Play(new Uri("http://192.168.0.100:8080/?action=stream"));
+        }
+
+        private void OnStopButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.control?.Dispose();
+            this.control = null;
+        }
+
         private void MqttStart(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("MqttStarted");
             status.Text = "Connected";
             Sensor.Text = "False";
-            MqttClient myClient = new MqttClient("192.168.0.103");
+            MqttClient myClient = new MqttClient("192.168.0.100");
 
             // Register to message received
             myClient.MqttMsgPublishReceived += client_recievedMessage;
@@ -77,5 +108,7 @@ namespace SmartUI
             battery.Text = NewData.BatteryLevel.ToString();
             //Add Time using google protobuf wellknown tyes
         }
+
+       
     }
 }
