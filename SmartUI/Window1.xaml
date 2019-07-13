@@ -1,0 +1,28 @@
+﻿<Window x:Class="SmartUI.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartUI"
+        mc:Ignorable="d"
+        Title="Window1" Height="658.163" Width="910.204" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Border Background="{x:Null}">
+        <Grid Margin="0,10,-110,-69">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock FontSize="24" FontWeight="DemiBold" Text="Monitoring Data" HorizontalAlignment="Center" Margin="301,-5,477,444" Width="242" Grid.Column="1" />
+            <TextBlock FontSize="19" Margin="0,10,21,410" RenderTransformOrigin="0.51,0.953" Grid.ColumnSpan="2"><LineBreak/><Run Text="Enter Patient details"/></TextBlock>
+            <Label Content="Patient Name" Foreground="DarkBlue" FontWeight="Bold" HorizontalAlignment="Left" Margin="-4,80,0,606" Width="909" FontSize="18" Grid.ColumnSpan="2" />
+            <TextBox FontSize="18" Text="Patient Name" HorizontalAlignment="Stretch" Margin="-4,111,22,545" RenderTransformOrigin="0.499,1.639" Grid.ColumnSpan="2" />
+            <Label FontSize="18" Content="Patient ID" Foreground="DarkBlue" FontWeight="Bold" HorizontalAlignment="Left" RenderTransformOrigin="-0.555,0.557" Margin="2,172,0,484" Width="903" Grid.Column="1" />
+            <TextBox FontSize="18" Text="Patient ID" Margin="0,211,0,444"  HorizontalAlignment="Stretch" Grid.ColumnSpan="2" />
+            <Label FontSize="18" Content="Disease" Foreground="DarkBlue" FontWeight="Bold" HorizontalAlignment="Center" Margin="-8,278,139,378" Width="889" Grid.ColumnSpan="2" />
+            <TextBox FontSize="18" Text="disease" Margin="2,327,115,337"  HorizontalAlignment="Stretch" Grid.Column="1" />
+
+            <Button Content="Login" HorizontalAlignment="Center" Margin="677,514,183,163" Height="Auto" Width="160" Click="login" Grid.Column="1" />
+        </Grid>
+    </Border>
+</Window>

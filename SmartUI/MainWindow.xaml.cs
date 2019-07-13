@@ -51,7 +51,7 @@ namespace SmartUI
                 System.Diagnostics.Debug.WriteLine(message);
             };
 
-            control.SourceProvider.MediaPlayer.Play(new Uri("http://192.168.0.100:8080/?action=stream"));
+            control.SourceProvider.MediaPlayer.Play(new Uri("http://192.168.0.100:8090/?action=stream"));
         }
 
         private void OnStopButtonClick(object sender, RoutedEventArgs e)
