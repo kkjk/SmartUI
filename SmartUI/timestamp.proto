@@ -1,0 +1,9 @@
+syntax = "proto3";
+package google.protobuf;
+option csharp_namespace = "Google.Protobuf.WellKnownTypes";
+
+message Timestamp {
+
+google.protobuf.Timestamp _timeStamp = 3;
+
+}
