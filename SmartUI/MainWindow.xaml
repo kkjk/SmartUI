@@ -14,68 +14,77 @@
             </Button>
         </Grid>
         <Grid Margin="0 60 0 0">
-           
-                <TabControl Margin="0">
-                    <TabItem Header="AMBIENT DATA" Foreground="DarkBlue" FontWeight="Heavy" FontFamily="Lucida Sans">
-                        <Grid Height="500" Width="1080">
 
-                            <Button Content="Monitor" Click="MqttStart" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.154,0.3" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            <TextBlock x:Name="Sensor" HorizontalAlignment="Left" Margin="236,149,0,0" TextWrapping="Wrap" Text="Motion Sensor" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46"/>
-                            <TextBlock x:Name="Luminance" HorizontalAlignment="Left" Margin="236,226,0,0" TextWrapping="Wrap" Text="Luminance" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46"/>
-                            <TextBlock x:Name="Humidity" HorizontalAlignment="Left" Margin="236,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46" Height="29" Width="176"><Run Text="Relative Humidity"/><LineBreak/><Run/></TextBlock>
-                            <TextBlock x:Name="Temperature" HorizontalAlignment="Left" Margin="731,229,0,0" TextWrapping="Wrap" Text="Temperature" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46"/>
-                            <TextBlock x:Name="battery" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46" Height="29" Width="176" Margin="731,168,0,0"><Run Text="Battery"/><LineBreak/><Run/></TextBlock>
-                            <TextBlock x:Name="UV" HorizontalAlignment="Left" Margin="731,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46" Width="176" Height="28"><Run Text="UV "/><Run Text="Radiation"/></TextBlock>
-                            <TextBox x:Name="status" Text="Connection Status" Foreground="Green" HorizontalAlignment="Left" Height="34" Margin="10,62,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="198" FontSize="14"/>
-                            <Label Content="Motion Sensor" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="69,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
-                            <Label Content="Luminance" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="69,216,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
-                            <Label Content="Relative Humidity" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="69,296,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
-                            <Label Content="Battery Level" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="571,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
-                            <Label Content="Temperature" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="571,226,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
-                            <Label Content="Ultraviolet Radiation" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="546,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
-                            <Label Content="REAL TIME DATA STREAM" Foreground="DarkBlue" HorizontalAlignment="Stretch" Margin="484,18,424,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontWeight="Bold" FontFamily="Arial" Height="47"/>
-                        </Grid>
-                    </TabItem>
+            <TabControl Margin="0,3,0,-3" SelectionChanged="TabControl_SelectionChanged">
+                <TabItem Header="AMBIENT DATA" Foreground="DarkBlue" FontWeight="Heavy" FontFamily="Lucida Sans" Margin="0,0,0,-2" Width="270">
+                    <Grid Height="500" Width="1080">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="725*"/>
+                            <ColumnDefinition Width="105*"/>
+                            <ColumnDefinition Width="16*"/>
+                            <ColumnDefinition Width="234*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <TabItem Header="VIDEO STREAM" Foreground="DarkBlue" FontWeight="Heavy" FontFamily="Lucida Sans">
-                        <Grid Height="500" Width="1080">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Button Grid.Row="1" HorizontalAlignment="Left" Click="OnPlayButtonClick">Play</Button>
-                            <Button Grid.Row="2" HorizontalAlignment="Left" Click="OnStopButtonClick">Stop</Button>
-                            <ContentControl Grid.Row="0" Name="ControlContainer">
-                            </ContentControl>
+                        <Button Content="Monitor" Click="MqttStart" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.154,0.3" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                        <TextBlock x:Name="Sensor" HorizontalAlignment="Left" Margin="236,149,0,0" TextWrapping="Wrap" Text="Motion Sensor" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46"/>
+                        <TextBlock x:Name="Luminance" HorizontalAlignment="Left" Margin="236,226,0,0" TextWrapping="Wrap" Text="Luminance" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46"/>
+                        <TextBlock x:Name="Humidity" HorizontalAlignment="Left" Margin="236,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46" Height="29" Width="176"><Run Text="Relative Humidity"/><LineBreak/><Run/></TextBlock>
+                        <TextBlock x:Name="Temperature" HorizontalAlignment="Left" Margin="6,229,0,0" TextWrapping="Wrap" Text="Temperature" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46" Width="129" Grid.ColumnSpan="3" Grid.Column="1"/>
+                        <TextBlock x:Name="battery" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46" Height="29" Width="176" Margin="6,168,0,0" Grid.ColumnSpan="3" Grid.Column="1"><Run Text="Battery"/><LineBreak/><Run/></TextBlock>
+                        <TextBlock x:Name="UV" HorizontalAlignment="Left" Margin="6,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.421,0.46" Width="176" Height="28" Grid.ColumnSpan="3" Grid.Column="1"><Run Text="UV "/><Run Text="Radiation"/></TextBlock>
+                        <TextBox x:Name="status" Text="Connection Status" Foreground="Green" HorizontalAlignment="Left" Height="34" Margin="10,62,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="198" FontSize="14"/>
+                        <Label Content="Motion Sensor" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="69,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
+                        <Label Content="Luminance" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="69,216,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
+                        <Label Content="Relative Humidity" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="69,296,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
+                        <Label Content="Battery Level" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="571,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
+                        <Label Content="Temperature" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="571,226,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
+                        <Label Content="Ultraviolet Radiation" Foreground="DarkBlue" HorizontalAlignment="Left" Margin="546,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontFamily="Calibri" FontSize="14"/>
+                        <Label Content="REAL TIME DATA STREAM" Foreground="DarkBlue" HorizontalAlignment="Stretch" Margin="484,18,69,0" VerticalAlignment="Top" RenderTransformOrigin="-1.409,-6.241" FontWeight="Bold" FontFamily="Arial" Height="47"/>
+                    </Grid>
+                </TabItem>
 
-                        </Grid>
-                    </TabItem>
-                    <TabItem Header="OVERVIEW"  Foreground="DarkBlue" FontWeight="Heavy" FontFamily="Lucida Sans">
-                        <Grid Height="500" Width="1080">
-                            <Label Content="GRAPHS" Foreground="Black" HorizontalAlignment="Center"></Label>
+                <TabItem Width="270" Header="VIDEO STREAM" Foreground="DarkBlue" FontWeight="Heavy" FontFamily="Lucida Sans" Margin="5,0,-5,0" Height="20" VerticalAlignment="Top">
+                    <Grid Height="500" Width="1080">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="1" HorizontalAlignment="Left" Click="OnPlayButtonClick">Play</Button>
+                        <Button Grid.Row="2" HorizontalAlignment="Left" Click="OnStopButtonClick">Stop</Button>
+                        <ContentControl Grid.Row="0" Name="ControlContainer">
+                        </ContentControl>
+                        <ListBox Name ="ListBox1" HorizontalAlignment="Left" Height="49" Margin="212,5,0,0" Grid.Row="1" Foreground="Black"  Grid.RowSpan="2" VerticalAlignment="Top" Width="423">
 
-                        </Grid>
-                    </TabItem>
-                    <TabItem Header="ALERTS"  Foreground="DarkBlue" FontWeight="Heavy" FontFamily="Lucida Sans">
-                        <StackPanel Height="500" Width="1080">
+                        </ListBox>
+                        <Button Content="Sync" HorizontalAlignment="Left" Height="39" Margin="797,15,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Width="118" Click="sync_Click"/>
 
-                            <Label Content="ANOMALY" Foreground="Black" HorizontalAlignment="Center"></Label>
-                            <Label Content="SOURCE SENSOR " Foreground="Black" HorizontalAlignment="Center"></Label>
-                            <Label Content="ALERT TYPE" Foreground="Black" HorizontalAlignment="Center"></Label>
-                            <Label Content="ACTION" Foreground="Black" HorizontalAlignment="Center"></Label>
-                        </StackPanel>
-                    </TabItem>
-                    <TabItem Header="ACTUATORS"  Foreground="DarkBlue" FontWeight="Heavy" FontFamily="Lucida Sans">
-                        <StackPanel Height="500" Width="1080">
-                            <Label Content="HVAC" Foreground="DarkBlue" HorizontalAlignment="Center"></Label>
-                            <Label Content="LIGHTS" Foreground="DarkBlue" HorizontalAlignment="Center"></Label>
-                            <Label Content="DEHUMIDIFIER" Foreground="DarkBlue" HorizontalAlignment="Center"></Label>
-                        </StackPanel>
-                    </TabItem>
-                </TabControl>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="OVERVIEW"  Foreground="DarkBlue" FontWeight="Heavy" FontFamily="Lucida Sans" Margin="8,0,-133,-2">
+                    <Grid Height="500" Width="1080" Name="GridWeb" Loaded="Window_Loaded">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="430*"/>
+                            <ColumnDefinition Width="29*"/>
+                            <ColumnDefinition Width="81*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Click="Getgraph" Content="GET CHARTS" Foreground="Black" HorizontalAlignment="Left" Margin="10,10,0,458"></Button>
+                        
 
-            
+                    </Grid>
+                </TabItem>
+                <TabItem Header="ALERTS"  Foreground="DarkBlue" FontWeight="Heavy" FontFamily="Lucida Sans" Margin="137,0,-263,-2">
+                    <StackPanel Height="500" Width="1080">
+                        <Button Content="Show Notifications"  HorizontalAlignment="Left" Margin="0,18,0,0" VerticalAlignment="Top" Width="174" RenderTransformOrigin="0.154,0.3" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Height="34"/>
+                        <ListBox Background="LightSkyBlue" x:Name="ListBoxAlert" Margin="0,0,5,0" Height="447">
+
+                        </ListBox>
+                    </StackPanel>
+                </TabItem>
+
+            </TabControl>
+
+
         </Grid>
     </Grid>
 </Window>

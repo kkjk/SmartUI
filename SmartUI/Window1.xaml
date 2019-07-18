@@ -5,24 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmartUI"
         mc:Ignorable="d"
-        Title="Window1" Height="658.163" Width="910.204" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Border Background="{x:Null}">
-        <Grid Margin="0,10,-110,-69">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        Title="Window1" MaxHeight="1000" MaxWidth="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" SizeToContent="WidthAndHeight">
 
-            <TextBlock FontSize="24" FontWeight="DemiBold" Text="Monitoring Data" HorizontalAlignment="Center" Margin="301,-5,477,444" Width="242" Grid.Column="1" />
-            <TextBlock FontSize="19" Margin="0,10,21,410" RenderTransformOrigin="0.51,0.953" Grid.ColumnSpan="2"><LineBreak/><Run Text="Enter Patient details"/></TextBlock>
-            <Label Content="Patient Name" Foreground="DarkBlue" FontWeight="Bold" HorizontalAlignment="Left" Margin="-4,80,0,606" Width="909" FontSize="18" Grid.ColumnSpan="2" />
-            <TextBox FontSize="18" Text="Patient Name" HorizontalAlignment="Stretch" Margin="-4,111,22,545" RenderTransformOrigin="0.499,1.639" Grid.ColumnSpan="2" />
-            <Label FontSize="18" Content="Patient ID" Foreground="DarkBlue" FontWeight="Bold" HorizontalAlignment="Left" RenderTransformOrigin="-0.555,0.557" Margin="2,172,0,484" Width="903" Grid.Column="1" />
-            <TextBox FontSize="18" Text="Patient ID" Margin="0,211,0,444"  HorizontalAlignment="Stretch" Grid.ColumnSpan="2" />
-            <Label FontSize="18" Content="Disease" Foreground="DarkBlue" FontWeight="Bold" HorizontalAlignment="Center" Margin="-8,278,139,378" Width="889" Grid.ColumnSpan="2" />
-            <TextBox FontSize="18" Text="disease" Margin="2,327,115,337"  HorizontalAlignment="Stretch" Grid.Column="1" />
+    <Grid Margin="0,10,-115,-65" Background="Gainsboro">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-            <Button Content="Login" HorizontalAlignment="Center" Margin="677,514,183,163" Height="Auto" Width="160" Click="login" Grid.Column="1" />
-        </Grid>
-    </Border>
+        <TextBlock FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"  Width="619" Grid.Column="1" Margin="171,0,93,540" ><Run Text="Smart Environment Monitoring"/><Run Text=" "/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" FontSize="20" Margin="294,115,401,419" RenderTransformOrigin="0.51,0.953" Grid.ColumnSpan="2" FontWeight="Bold" FontStyle="Italic" FontFamily="Century Gothic"><LineBreak/><Run Text="Enter Patient details"/></TextBlock>
+        <TextBlock Text="Patient Name" Foreground="DarkBlue" FontWeight="Bold" HorizontalAlignment="Left" Margin="116,188,0,366" Width="204" FontSize="18" Grid.ColumnSpan="2" />
+        <TextBlock Text="Jerry" Background="White" Foreground="DarkMagenta" FontSize="19"  HorizontalAlignment="Stretch" Margin="357,176,308,366" RenderTransformOrigin="0.499,1.639" Grid.ColumnSpan="2" />
+        <TextBlock FontSize="18" Text="Patient ID" Foreground="DarkBlue" FontWeight="Bold" HorizontalAlignment="Left" RenderTransformOrigin="-0.555,0.557" Margin="116,255,0,300" Width="168" Grid.Column="1" />
+        <TextBlock Text="337337" Background="White" Foreground="DarkMagenta" FontSize="19"  Margin="357,241,308,300"  HorizontalAlignment="Stretch" Grid.ColumnSpan="2" />
+        <TextBlock FontSize="18" Text="Disease" Foreground="DarkBlue" FontWeight="Bold" HorizontalAlignment="Center" Margin="116,394,599,162" Width="168" Grid.ColumnSpan="2" />
+
+
+        <Button Content="Login" FontSize="24"  HorizontalAlignment="Center" Margin="554,450,147,74" Height="Auto" Width="182" Click="login" Grid.Column="1" />
+        <ComboBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="116,394,0,0" VerticalAlignment="Top" Width="137" Height="34"/>
+        <ComboBox Background="Gray" Height="25" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="357,403,0,0" VerticalAlignment="Top" Width="250" RenderTransformOrigin="-1.717,9.143" SelectionChanged="ComboBox_SelectionChanged" FontSize="14" BorderBrush="Black">
+            <ComboBoxItem>Ebola</ComboBoxItem>
+            <ComboBoxItem>Viral hemorrhagic fever</ComboBoxItem>
+        </ComboBox>
+        <TextBlock FontSize="18" Text="Isolation Unit" Foreground="DarkBlue" FontWeight="Bold" HorizontalAlignment="Left" RenderTransformOrigin="-0.555,0.557" Margin="116,327,0,227" Width="168" Grid.Column="1" />
+        <TextBlock Background="White" Foreground="DarkMagenta" FontSize="18" Text="U-19" Margin="357,326,276,227"  HorizontalAlignment="Stretch" Grid.ColumnSpan="2" />
+        <TextBlock Foreground="DarkBlue" FontWeight="Bold" HorizontalAlignment="Left" Margin="116,85,0,460" Width="204" FontSize="18" Grid.ColumnSpan="2" ><Run Text="Doctor "/><Run Text="Name"/></TextBlock>
+        <TextBlock Background="White" Text="Dr.Tom" Foreground="DarkMagenta" FontSize="19" HorizontalAlignment="Stretch" Margin="357,73,308,475" RenderTransformOrigin="0.499,1.639" Grid.ColumnSpan="2"/>
+    </Grid>
+
 </Window>

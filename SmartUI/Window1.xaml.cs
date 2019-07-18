@@ -30,5 +30,15 @@ namespace SmartUI
             this.Visibility = Visibility.Hidden;
             window.Show();
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
